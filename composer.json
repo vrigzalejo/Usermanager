@@ -1,0 +1,35 @@
+{
+    "name": "vrigzalejo/usermanager",
+    "description": "Usermanager package for Laravel 4",
+    "keywords": ["laravel", "usermanager", "admin", "user", "sentry", "authentication", "user", "group", "permission"],
+    "authors": [
+        {
+            "name": "Vrigz Alejo",
+            "email": "nuedu2012@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "cartalyst/sentry": "2.1.*"
+    },
+    "require-dev": {
+        "illuminate/database": "~4.1",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "4.0.*"        
+    },
+    "autoload": {
+        "classmap": [
+            "src/commands",
+            "src/controllers",
+            "src/helpers",
+            "src/migrations",
+            "src/models",
+            "src/services"
+        ],
+        "psr-0": {
+            "Vrigz\\Usermanager": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

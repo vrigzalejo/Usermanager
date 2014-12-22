@@ -1,0 +1,269 @@
+<?php
+
+namespace Vrigzalejo\Usermanager\Controllers;
+
+use Vrigzalejo\Usermanager\Controllers\BaseController;
+use Vrigzalejo\Usermanager\Services\Validators\Group as GroupValidator;
+use PermissionProvider;
+use View;
+use Input;
+use Config;
+use Response;
+use Sentry;
+use Request;
+use DB;
+use URL;
+
+class GroupController extends BaseController
+{
+    /**
+    * List of groups
+    */
+    public function getIndex()
+    {
+        $emptyGroup =  Sentry::getGroupProvider()->createModel();
+
+        // Ajax search
+        $groupId = Input::get('groupIdSearch');
+        if(!empty($groupId)) {
+            $emptyGroup = $emptyGroup->where('id', $groupId);
+        }
+        $groupname = Input::get('groupnameSearch');
+        if(!empty($groupname)) {
+            $emptyGroup = $emptyGroup->where('name', 'LIKE', '%'.$groupname.'%');
+        }
+
+        $groups = $emptyGroup->paginate(Config::get('usermanager::config.item-perge-page'));
+
+        // ajax: reload only the content container
+        if(Request::ajax()) {
+            $html = View::make(Config::get('usermanager::views.groups-list'), array('groups' => $groups))->render();
+
+            return Response::json(array('html' => $html));
+        }
+
+        $this->layout = View::make(Config::get('usermanager::views.groups-index'), array('groups' => $groups));
+        $this->layout->title = trans('usermanager::groups.titles.list');
+        $this->layout->breadcrumb = Config::get('usermanager::breadcrumbs.groups');
+    }
+
+    /**
+    * Show create group view
+    */
+    public function getCreate()
+    {
+        $permissions = PermissionProvider::findAll();
+
+        $this->layout = View::make(Config::get('usermanager::views.group-create'), array('permissions' => $permissions));
+        $this->layout->title = trans('usermanager::groups.titles.new');
+        $this->layout->breadcrumb = Config::get('usermanager::breadcrumbs.create_group');
+    }
+
+    /**
+    * Create group
+    */
+    public function postCreate()
+    {
+        $groupname = Input::get('groupname');
+        $permissions = array();
+
+        $errors = $this->_validateGroup(Input::get('permission'), $groupname, $permissions);
+        if(!empty($errors)) {
+            return Response::json(array('groupCreated' => false, 'errorMessages' => $errors));
+        } else {
+            try {
+                // create group
+                Sentry::getGroupProvider()->create(array(
+                    'name' => $groupname,
+                    'permissions' => $permissions,
+                ));
+            } catch (\Cartalyst\Sentry\Groups\NameRequiredException $e) {} catch (\Cartalyst\Sentry\Groups\GroupExistsException $e) {
+                return Response::json(array('groupCreated' => false, 'message' => trans('usermanager::groups.messages.exists'), 'messageType' => 'danger'));
+            }
+        }
+
+        return Response::json(array('groupCreated' => true,  'redirectUrl' => URL::route('listGroups')));
+    }
+
+    /**
+     * Show group
+     * @param type $groupId
+     */
+    public function getShow($groupId)
+    {
+        try {
+            $group = Sentry::getGroupProvider()->findById($groupId);
+            $permissions = PermissionProvider::findAll();
+
+            $groupPermissions = array();
+            foreach($group->getPermissions() as $permissionValue => $key) {
+                try {
+                    $p = PermissionProvider::findByValue($permissionValue);
+                    foreach($permissions as $key => $permission) {
+                        if($p->getId() === $permission->getId()) {
+                            $groupPermissions[] = $permission;
+                            unset($permissions[$key]);
+                        }
+                    }
+                } catch(\Vrigzalejo\Usermanager\Models\Permissions\PermissionNotFoundException $e){}
+            }
+
+            // get users in group
+            $users = $group->users()->paginate(Config::get('usermanager::config.item-perge-page'));
+
+            // users not in group
+            $usersNotInGroup = Sentry::getUserProvider()
+                ->createModel()
+                ->newQuery()
+                ->whereNotIn('id', function ($query) use ($groupId) {
+                    $query->select('user_id')
+                          ->from('users_groups')
+                          ->where('group_id', '=', $groupId);
+                })
+                ->get()
+                ->all();
+
+            // ajax request : reload only content container
+            if(Request::ajax()) {
+                $html = View::make(Config::get('usermanager::views.users-in-group'), array('group' => $group, 'users' => $users, 'candidateUsers' => $usersNotInGroup))->render();
+
+                return Response::json(array('html' => $html));
+            }
+
+            $this->layout = View::make(Config::get('usermanager::views.group-edit'), array('group' => $group, 'users' => $users, 'candidateUsers' => $usersNotInGroup, 'permissions' => $permissions, 'ownPermissions' => $groupPermissions));
+            $this->layout->title = 'Group '.$group->getName();
+            $this->layout->breadcrumb = array(
+                array(
+                    'title' => trans('usermanager::breadcrumbs.groups'),
+                    'link' => URL::route('listGroups'),
+                    'icon' => 'glyphicon-list-alt'
+                ),
+                array(
+                    'title' => $group->name,
+                    'link' => URL::current(),
+                    'icon' => ''
+                )
+            );
+        } catch (\Cartalyst\Sentry\Groups\GroupNotFoundException $e) {
+            $this->layout = View::make(Config::get('usermanager::views.error'), array('message' => trans('usermanager::groups.messages.not-found')));
+        }
+    }
+
+    /**
+     * Edit group action
+     * @param int $groupId
+     */
+    public function putShow($groupId)
+    {
+        $groupname = Input::get('groupname');
+        $permissions = array();
+
+        $errors = $this->_validateGroup(Input::get('permission'), $groupname, $permissions);
+        if(!empty($errors)) {
+            return Response::json(array('groupUpdated' => false, 'errorMessages' => $errors));
+        } else {
+            try {
+                $group = Sentry::getGroupProvider()->findById($groupId);
+                $group->name = $groupname;
+                $group->permissions = $permissions;
+
+                $permissions = (empty($permissions)) ? '' : json_encode($permissions);
+                // delete permissions in db
+                DB::table('groups')
+                    ->where('id', $groupId)
+                    ->update(array('permissions' => $permissions));
+
+                if($group->save()) {
+                    return Response::json(array('groupUpdated' => true, 'message' => trans('usermanager::groups.messages.success'), 'messageType' => 'success'));
+                } else {
+                    return Response::json(array('groupUpdated' => false, 'message' => trans('usermanager::groups.messages.try'), 'messageType' => 'danger'));
+                }
+            } catch (\Cartalyst\Sentry\Groups\NameRequiredException $e) {} catch (\Cartalyst\Sentry\Groups\GroupExistsException $e) {
+                return Response::json(array('groupUpdated' => false, 'message' => trans('usermanager::groups.messages.exists'), 'messageType' => 'danger'));
+            }
+        }
+    }
+
+    /**
+     * Delete group
+     * @param  int $groupId
+     * @return Response
+     */
+    public function delete($groupId)
+    {
+        try {
+            $group = Sentry::getGroupProvider()->findById($groupId);
+            $group->delete();
+        } catch (\Cartalyst\Sentry\Groups\GroupNotFoundException $e) {
+            return Response::json(array('deletedGroup' => false, 'message' => trans('usermanager::groups.messages.not-found'), 'messageType' => 'danger'));
+        }
+
+        return Response::json(array('deletedGroup' => true, 'message' => trans('usermanager::groups.messages.delete-success'), 'messageType' => 'success'));
+    }
+
+    /**
+     * Remove user from group
+     * @param int $groupId
+     * @param int $userId
+     * @return Response
+     */
+    public function deleteUserFromGroup($groupId, $userId)
+    {
+        try {
+            $user = Sentry::getUserProvider()->findById($userId);
+            $group = Sentry::getGroupProvider()->findById($groupId);
+            $user->removeGroup($group);
+
+            return Response::json(array('userDeleted' => true, 'message' => trans('usermanager::groups.messages.user-removed-success'), 'messageType' => 'success'));
+        } catch (\Cartalyst\Sentry\Users\UserNotFoundException $e) {
+            return Response::json(array('userDeleted' => false, 'message' => trans('usermanager::users.messages.not-found'), 'messageType' => 'danger'));
+        } catch(\Cartalyst\Sentry\Groups\GroupNotFoundException $e) {
+            return Response::json(array('userDeleted' => false, 'message' => trans('usermanager::groups.messages.not-found'), 'messageType' => 'danger'));
+        }
+    }
+
+    /**
+     * Add a user in a group
+     * @return Response
+     */
+    public function addUserInGroup()
+    {
+        try {
+            $user = Sentry::getUserProvider()->findById(Input::get('userId'));
+            $group = Sentry::getGroupProvider()->findById(Input::get('groupId'));
+            $user->addGroup($group);
+
+            return Response::json(array('userAdded' => true, 'message' => trans('usermanager::groups.messages.user-add-success'), 'messageType' => 'success'));
+        } catch (\Cartalyst\Sentry\Users\UserNotFoundException $e) {
+            return Response::json(array('userAdded' => false, 'message' => trans('usermanager::users.messages.not-found'), 'messageType' => 'danger'));
+        } catch(\Cartalyst\Sentry\Groups\GroupNotFoundException $e) {
+            return Response::json(array('userAdded' => false, 'message' => trans('usermanager::groups.messages.not-found'), 'messageType' => 'danger'));
+        }
+    }
+
+    /**
+     * Validate group informations
+     * @param array $permissionsValues
+     * @param string $groupname
+     * @return array
+     */
+    protected function _validateGroup($permissionsValues, $groupname, &$permissions)
+    {
+        $errors = array();
+        // validate permissions
+        if(!empty($permissionsValues)) {
+            foreach($permissionsValues as $key => $permission) {
+               $permissions[$key] = 1;
+            }
+        }
+        // validate group name
+        $validator = new GroupValidator(Input::all());
+
+        $gnErrors = array();
+        if(!$validator->passes()) {
+            $gnErrors = $validator->getErrors();
+        }
+
+        return $gnErrors;
+    }
+}
