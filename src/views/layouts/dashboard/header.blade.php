@@ -8,7 +8,7 @@
         <a class="navbar-brand" href="{{ (!empty($siteUrl)) ? $siteUrl : '/'}} " target="_new">
             {{ (!empty($siteName)) ? $siteName : "User Manager"}}
 
-            <div class="visible-sm"><img class="ajax-loader ajax-loader-sm" src="{{ asset('packages/mrjuliuss/usermanager/assets/img/ajax-load.gif') }}" style="float: right;"/></div>
+            <div class="visible-sm"><img class="ajax-loader ajax-loader-sm" src="{{ asset('packages/vrigzalejo/usermanager/assets/img/ajax-load.gif') }}" style="float: right;"/></div>
         </a>
     </div>
 
@@ -39,7 +39,7 @@
 
         @if(Sentry::check())
         <ul class="nav navbar-nav navbar-{{ (Config::get('usermanager::config.direction') === 'rtl') ? 'left' : 'right' }}">
-            <li class="hidden-sm"><img class="ajax-loader ajax-loader-lg" src="{{ asset('packages/mrjuliuss/usermanager/assets/img/ajax-load.gif') }}" style="float: right;"/></li>
+            <li class="hidden-sm"><img class="ajax-loader ajax-loader-lg" src="{{ asset('packages/vrigzalejo/usermanager/assets/img/ajax-load.gif') }}" style="float: right;"/></li>
             {{ (!empty($navPagesRight)) ? $navPagesRight : '' }}
             <li><a href="{{ URL::route('showUser', Sentry::getUser()->id ) }}"><span class="text">{{ Sentry::getUser()->username }}</span></a></li>
             <li><a title="Logout" href="{{ URL::route('logout') }}"><i class="glyphicon glyphicon-share-alt"></i> <span class="text">{{ trans('usermanager::navigation.logout') }}</span></a></li>
