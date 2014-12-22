@@ -30,7 +30,7 @@ return array(
      */
     'css_dev' => array(
         '/packages/vrigzalejo/usermanager/assets/css/bootstrap.min.css',
-        '/packages/vrigzalejo/usermanager/assets/css/flat-ui.min.css',
+        '/packages/vrigzalejo/usermanager/assets/css/flat-ui.min.css'
     ),
     /**
      * JS for production stage
@@ -48,7 +48,7 @@ return array(
      */
     'css_production'   => array(
         '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css',
-        '/packages/vrigzalejo/usermanager/assets/css/flat-ui.min.css',
+        '/packages/vrigzalejo/usermanager/assets/css/flat-ui.min.css'
     ),
     /**
      * JS for production stage 
@@ -56,7 +56,7 @@ return array(
     'js_production' => array(
         '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
         '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js',
-        '//vjs.zencdn.net/4.7/video.js',
+        '//vjs.zencdn.net/4.7/video.js'
     ),
 
 
@@ -67,5 +67,5 @@ return array(
     /**
      * VideoJS SWF for production stage 
      */
-    'videojs_swf_production' => '//vjs.zencdn.net/c/video.js',
+    'videojs_swf_production' => '//vjs.zencdn.net/c/video.js'
 );

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Vrigzalejo\Usermanager\Models\Facades\PermissionProvider;
 
 class AlterUsersTable extends Migration {
 
@@ -26,10 +25,7 @@ class AlterUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('users', function(Blueprint $table)
-		{
-			//
-		});
+		//
 	}
 
 }
