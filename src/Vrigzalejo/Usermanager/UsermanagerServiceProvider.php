@@ -111,7 +111,7 @@ class UsermanagerServiceProvider extends ServiceProvider
         // add permission provider to aliases
         $this->app->booting(function () {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-            $loader->alias('PermissionProvider', 'Vrigzalejo\Usermanager\Facades\PermissionProvider');
+            $loader->alias('PermissionProvider', 'Vrigzalejo\Usermanager\Models\Facades\PermissionProvider');
         });
     }
 
