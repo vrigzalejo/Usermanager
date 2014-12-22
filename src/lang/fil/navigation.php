@@ -2,8 +2,8 @@
 
 return array(
     'index' => 'Dashboard',
-    'users' => 'Users',
-    'groups' => 'Groups',
-    'permissions' => 'Permissions',
-    'logout' => 'Logout'
+    'users' => 'Mga Gumagamit',
+    'groups' => 'Mga Grupo',
+    'permissions' => 'Mga Pahintulot',
+    'logout' => 'Umalis'
 );
