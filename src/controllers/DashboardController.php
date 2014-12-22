@@ -1,9 +1,9 @@
 <?php
 
-namespace Vrigzalejoalejo\Usermanager\Controllers;
+namespace Vrigzalejo\Usermanager\Controllers;
 
-use Vrigzalejoalejo\Usermanager\Controllers\BaseController;
-use Vrigzalejoalejo\Usermanager\Services\Validators\User as UserValidator;
+use Vrigzalejo\Usermanager\Controllers\BaseController;
+use Vrigzalejo\Usermanager\Services\Validators\User as UserValidator;
 use View;
 use Input;
 use Sentry;

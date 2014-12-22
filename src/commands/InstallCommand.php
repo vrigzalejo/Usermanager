@@ -1,6 +1,6 @@
 <?php
 
-namespace Vrigz\Usermanager\Commands;
+namespace Vrigzalejo\Usermanager\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
