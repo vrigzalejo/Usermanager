@@ -1,6 +1,6 @@
 {
     "name": "vrigzalejo/usermanager",
-    "description": "Usermanager package for Laravel 4",
+    "description": "User Manager w/ Sentry 2.1 in Laravel 4.1 / 4.2",
     "keywords": ["laravel", "usermanager", "admin", "user", "sentry", "authentication", "user", "group", "permission"],
     "authors": [
         {
