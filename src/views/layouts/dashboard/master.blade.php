@@ -26,12 +26,12 @@
         @endif
 
         @if(App::environment('local'))
-            @foreach(Config::get('usermanager::assets.js_dev') as $style)
-                {{ HTML::style($style) }}
+            @foreach(Config::get('usermanager::assets.js_dev') as $script)
+                {{ HTML::script($script) }}
             @endforeach
         @else
-            @foreach(Config::get('usermanager::assets.js_production') as $style)
-                {{ HTML::style($style) }}
+            @foreach(Config::get('usermanager::assets.js_production') as $script)
+                {{ HTML::script($script) }}
             @endforeach
         @endif
 
