@@ -64,6 +64,30 @@ This command does the same as the install command, only it won't publish again t
 
 ## Configuration
 
+### Staging
+
+Set the local environment first in your project's bootstrap/start.php
+ 
+Replace this one:
+
+  $env = $app->detectEnvironment(array(
+
+   'local' => array('homestead'),
+
+  ));
+ 
+  
+With this one below:
+  
+  $env = $app->detectEnvironment(function()
+  {
+  
+    return getenv('APP_ENV') ?: 'local';
+    
+  });
+
+
+
 ### Login
 
 Users can be logged using **email** (default) or **username**.
