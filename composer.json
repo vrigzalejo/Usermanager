@@ -28,7 +28,7 @@
             "src/services"
         ],
         "psr-0": {
-            "Vrigz\\Usermanager": "src/"
+            "Vrigzalejo\\Usermanager": "src/"
         }
     },
     "minimum-stability": "dev"
