@@ -13,7 +13,7 @@ class AlterUsersTable extends Migration {
 	{
 		Schema::table('users', function($table)
 		{
-			$table->string('username')->after('email')
+			$table->string('username')->after('email');
 			$table->unique('username');
 		});
 	}
