@@ -90,7 +90,7 @@ class UsermanagerServiceProvider extends ServiceProvider {
     {
         // register breadcrumbs
     	$this->app['breadcrumbs'] = $this->app->share(function () {
-    		return new \Vrigzalejo\Usermanager\Helpers\Breadcrumbs\Breadcumbs();
+    		return new \Vrigzalejo\Usermanager\Helpers\Breadcrumbs\Breadcrumbs();
     	});
         // shortcut so developers don't need to add an Alias in app/config/app.php
     	$this->app->booting(function () {
