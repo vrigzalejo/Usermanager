@@ -21,10 +21,7 @@
                         <input type="checkbox" name="remember" id="remember" value="false">{{ trans('usermanager::all.remember') }}
                     </label>
                 </div>
-                <label class="checkbox primary" for="checkbox1c">
-                    <input type="checkbox" data-toggle="radio" value="" id="checkbox1c" required>
-                    Unchecked
-                </label>
+
                 <button class="btn btn-block btn-large btn-primary" style="margin-top: 15px;">{{ trans('usermanager::all.signin') }}</button>
             </form>
         </div>

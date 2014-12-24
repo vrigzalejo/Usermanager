@@ -1,5 +1,11 @@
 #Versions
 
+
+##1.0.1
+* Removed bootstrap.min.js in config/asset.php
+* Added application.js
+* Fix checkbox, dropdown-list, radio button to Flat UI style
+
 ##1.0.0
 * First release
 * Forked from Mrjuliuss/Syntara v1.1.24
