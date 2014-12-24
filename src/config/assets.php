@@ -37,9 +37,10 @@ return array(
      */
     'js_dev' => array(
         '/packages/vrigzalejo/usermanager/assets/js/jquery.min.js',
-        '/packages/vrigzalejo/usermanager/assets/js/bootstrap.min.js',
         '/packages/vrigzalejo/usermanager/assets/js/flat-ui.min.js',
+        '/packages/vrigzalejo/usermanager/assets/js/application.js',
         '/packages/vrigzalejo/usermanager/assets/js/video.js'
+
     ),
 
    
@@ -55,7 +56,8 @@ return array(
      */
     'js_production' => array(
         '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
-        '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js',
+        '/packages/vrigzalejo/usermanager/assets/js/flat-ui.min.js',
+        '/packages/vrigzalejo/usermanager/assets/js/application.js',
         '//vjs.zencdn.net/4.7/video.js'
     ),
 

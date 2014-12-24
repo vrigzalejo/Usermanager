@@ -13,8 +13,8 @@ You can add some CSS and Javascripts in **app/config/packages/vrigzalejo/userman
         /** JS for production stage **/
     'js_dev' => array(
         '/assets/js/jquery.min.js',
-        '/assets/js/bootstrap.min.js',
         '/assets/js/flat-ui.min.js',
+        '/assets/js/application.js',
         '/assets/js/video.js'
     ),
 
@@ -28,7 +28,8 @@ You can add some CSS and Javascripts in **app/config/packages/vrigzalejo/userman
         /** JS for production stage **/
     'js_production' => array(
         '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
-        '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js',
+        '/assets/js/flat-ui.min.js',
+        '/assets/js/application.js',
         '//vjs.zencdn.net/4.7/video.js',
     ),
 
