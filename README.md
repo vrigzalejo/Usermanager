@@ -1,5 +1,4 @@
 #Versions
----------------
 
 ##1.0.0
 * First release
@@ -11,8 +10,10 @@
 * You can set VideoJS swf for development and production
 
 
+
+
+
 # Custom Development
----------------
 
 ## New assets
 
@@ -279,8 +280,10 @@ In **app/config/packages/vrigzalejo/usermanager/mails.php**, change ```email``` 
 In **app/config/packages/vrigzalejo/usermanager/config.php** , change ```direction``` from **LTR** to **RTL**
 
 
+
+
+
 # Usermanager
----------------
 
 Usermanager is an admin system ( forked from Syntara ) for Laravel 4, made for user management easier.
 
@@ -326,8 +329,9 @@ Usermanager is an admin system ( forked from Syntara ) for Laravel 4, made for u
 * Flat UI 2.x
 
 
+
+
 # Installation
----------------
 
 You need to have an installed Laravel 4, if not : please read the [L4 install doc](http://laravel.com/docs/installation)
 
