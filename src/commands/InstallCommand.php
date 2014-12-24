@@ -44,23 +44,23 @@ class InstallCommand extends Command
         $this->info('## Usermanager Install ##');
 
         // publish sentry config
-        $this->call('config:publish', array('package' => 'cartalyst/sentry' ) );
+        $this->call('config:publish', array('package' => 'cartalyst/sentry'));
 
         // publish syntara config
-        $this->call('config:publish', array('package' => 'vrigzalejo/usermanager' ) );
+        $this->call('config:publish', array('package' => 'vrigzalejo/usermanager'));
 
         // publish syntara assets
-        $this->call('asset:publish', array('package' => 'vrigzalejo/usermanager' ) );
+        $this->call('asset:publish', array('package' => 'vrigzalejo/usermanager'));
 
         // run migrations
-        $this->call('migrate', array('--env' => $this->option('env'), '--package' => 'cartalyst/sentry' ) );
-        $this->call('migrate', array('--env' => $this->option('env'), '--package' => 'vrigzalejo/usermanager' ) );
+        $this->call('migrate', array('--env' => $this->option('env'), '--package' => 'cartalyst/sentry'));
+        $this->call('migrate', array('--env' => $this->option('env'), '--package' => 'vrigzalejo/usermanager'));
 
         // create admin group
         try {
             $this->info('Creating "Admin" group...');
             $group = Sentry::getGroupProvider()->create(array(
-                'name'        => 'Admin',
+                'name' => 'Admin',
                 'permissions' => array(
                     'superuser' => 1
                 ),

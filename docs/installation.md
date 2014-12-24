@@ -70,21 +70,21 @@ Set the local environment first in your project's bootstrap/start.php
  
 Replace this one:
 
-  $env = $app->detectEnvironment(array(
+    $env = $app->detectEnvironment(array(
 
-   'local' => array('homestead'),
+        'local' => array('homestead'),
 
-  ));
- 
+    ));
+
   
 With this one below:
-  
-  $env = $app->detectEnvironment(function()
-  {
-  
-    return getenv('APP_ENV') ?: 'local';
-    
-  });
+
+    $env = $app->detectEnvironment(function()
+    {
+
+        return getenv('APP_ENV') ?: 'local';
+
+    });
 
 
 
