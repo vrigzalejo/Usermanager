@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="control-group">
-                                    <button id="update-group" class="btn btn-primary">{{ trans('usermanager::all.update') }}</button>
+                                    <button id="update-group" class="btn btn-embossed btn-primary">{{ trans('usermanager::all.update') }}</button>
                                 </div>
                             </div>
                         </div>

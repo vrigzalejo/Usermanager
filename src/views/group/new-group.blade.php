@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="control-group">
-                                    <button id="create-group" class="btn btn-primary">{{ trans('usermanager::all.create') }}</button>
+                                    <button id="create-group" class="btn btn-primary btn-embossed">{{ trans('usermanager::all.create') }}</button>
                                 </div>
                             </div>
                         </div>

@@ -44,9 +44,11 @@
                             @foreach($groups as $group)
                             <label class="checkbox-inline">
                                 @if($currentUser->hasAccess(Config::get('usermanager::permissions.addUserGroup')))
-                                <input type="checkbox" id="groups[{{ $group->getId() }}]" name="groups[]" value="{{ $group->getId() }}" {{ ($user->inGroup($group)) ? 'checked="checked"' : ''}}>
+                                <label class="checkbox primary">
+                                    <input type="checkbox" data-toggle="switch" id="groups[{{ $group->getId() }}]" name="groups[]" value="{{ $group->getId() }}" data-on-text="<span class='fui-check'></span>" data-off-text="<span class='fui-cross'></span>" {{ ($user->inGroup($group)) ? 'checked="checked"' : ''}} />
+                                    {{ $group->getName() }}
+                                </label>
                                 @endif
-                                {{ $group->getName() }}
                             </label>
                             @endforeach
                             </div>
@@ -75,7 +77,7 @@
                         <div class="col-lg-12">
                             <br>
                             <div class="form-group">
-                                <button id="update-user" class="btn btn-primary">{{ trans('usermanager::all.update') }}</button>
+                                <button id="update-user" class="btn btn-embossed btn-primary">{{ trans('usermanager::all.update') }}</button>
                             </div>
                         </div>
                     </div>

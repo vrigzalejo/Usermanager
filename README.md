@@ -1,9 +1,14 @@
 #Versions
 
 ##1.0.1
-* Removed bootstrap.min.js in config/asset.php
-* Added application.js
-* Fix checkbox, dropdown-list, radio button to Flat UI style
+* Removed bootstrap.min.js in assets and in config/asset.php by default
+* Changed css_production and js_production assets to CDN links
+* Added application.js, and style.css in assets
+* Added application.js in config/assets.php by default
+* Fix button, checkbox, dropdown-list, radio button to Flat UI style
+* Changed navbar style when navbar-toggle is visible 
+* Changed navbar-toggle hover to transparent
+* Changed navbar-brand's font-weight to lighter
 
 ##1.0.0
 * First release

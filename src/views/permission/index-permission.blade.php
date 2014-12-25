@@ -34,7 +34,7 @@
                             <label for="permissionValueSearch">{{ trans('usermanager::permissions.value') }}</label>
                             <input type="text" class="form-control" id="permissionValueSearch" name="permissionValueSearch">
                         </div>
-                        <button type="submit" class="btn btn-primary">{{ trans('usermanager::all.search') }}</button>
+                        <button type="submit" class="btn btn-primary btn-embossed">{{ trans('usermanager::all.search') }}</button>
                     </form>
                 </div>
             </section>

@@ -39,8 +39,9 @@
                                 <label class="control-label">{{ trans('usermanager::users.groups') }}</label>
                                 <div class="form-group">
                                 @foreach($groups as $group)
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="groups[{{ $group->getId() }}]" name="groups[]" value="{{ $group->getId() }}">{{ $group->getName() }}
+                                <label class="checkbox primary">
+                                    <input type="checkbox" data-toggle="switch" id="groups[{{ $group->getId() }}]" name="groups[]" value="{{ $group->getId() }}" data-on-text="<span class='fui-check'></span>" data-off-text="<span class='fui-cross'></span>" />
+                                    {{ $group->getName() }}
                                 </label>
                                 @endforeach
                                 </div>
@@ -55,7 +56,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <button id="add-user" class="btn btn-primary" style="margin-top: 15px;">{{ trans('usermanager::all.create') }}</button>
+                                    <button id="add-user" class="btn btn-embossed btn-primary" style="margin-top: 15px;">{{ trans('usermanager::all.create') }}</button>
                                 </div>
                             </div>
                         </div>

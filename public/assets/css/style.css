@@ -1,0 +1,42 @@
+.checkbox, .radio {
+    padding: 0px;
+}
+.checkbox .icons, .radio .icons{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    vertical-align: middle;
+}
+
+.select {
+    min-width: 100% !important;
+}
+
+.input-group-addon {
+    color: #747678;
+    background-color: transparent;
+}
+
+.radio-inline, .checkbox-inline {
+    padding-left: 0px;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+}
+
+.navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after {
+    display: none;
+}
+
+.navbar-brand {
+    font-weight: lighter;
+}

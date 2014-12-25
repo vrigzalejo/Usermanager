@@ -25,7 +25,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <button id="update-permission" class="btn btn-primary">{{ trans('usermanager::all.update') }}</button>
+                            <button id="update-permission" class="btn btn-embossed btn-primary">{{ trans('usermanager::all.update') }}</button>
                         </div>
                     </form>
                 </div>

@@ -1,7 +1,7 @@
 <label class="control-label">{{ trans('usermanager::permissions.permissions')}}</label>
 <div class="input-group">
     <span class="input-group-addon"><span class="glyphicon glyphicon-plus-sign add-input"></span></span>
-    <select class="form-control permissions-select">
+    <select class="form-control permissions-select select select-primary mbl" data-toggle="select">
         @foreach($permissions as $permission)
         <option value="permission[{{ $permission->getValue() }}]">{{ $permission->getName() }}</option>
         @endforeach

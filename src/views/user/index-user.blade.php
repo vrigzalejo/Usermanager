@@ -45,13 +45,13 @@
                         </div>
                         <div class="form-group">
                             <label for="bannedSearch">{{ trans('usermanager::users.banned') }}</label>
-                            <select class="form-control" id="bannedSearch" name="bannedSearch">
+                            <select class="form-control select select-primary mbl" data-toggle="select" id="bannedSearch" name="bannedSearch">
                                 <option value="">--</option>
                                 <option value="0">{{ trans('usermanager::all.no') }}</option>
                                 <option value="1">{{ trans('usermanager::all.yes') }}</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">{{ trans('usermanager::all.search') }}</button>
+                        <button type="submit" class="btn btn-primary btn-embossed">{{ trans('usermanager::all.search') }}</button>
                     </form>
                 </div>
             </section>

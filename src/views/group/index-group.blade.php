@@ -30,7 +30,7 @@
                             <label for="groupnameSearch">{{ trans('usermanager::groups.name') }}</label>
                             <input type="text" class="form-control" id="groupnameSearch" name="groupnameSearch">
                         </div>
-                        <button type="submit" class="btn btn-primary">{{ trans('usermanager::all.search') }}</button>
+                        <button type="submit" class="btn btn-embossed btn-primary">{{ trans('usermanager::all.search') }}</button>
                     </form>
                 </div>
             </section>

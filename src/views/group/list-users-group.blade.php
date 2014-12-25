@@ -2,7 +2,7 @@
     {{ $users->links() }}
 
     <div style="float:right;">
-        <a id="delete-item" class="btn btn-danger users">{{ trans('usermanager::all.delete') }}</a>
+        <a id="delete-item" class="btn btn-danger btn-embossed users">{{ trans('usermanager::all.delete') }}</a>
     </div>
 </div>
 
@@ -10,7 +10,11 @@
 <thead>
     <tr>
         @if($currentUser->hasAccess(Config::get('usermanager::permissions.addUserGroup')))
-        <th style="width:20px; text-align: center;"><input type="checkbox" class="check-all"></th>
+        <th style="width:20px; text-align: center;">
+            <label class="checkbox primary">
+                <input type="checkbox" data-toggle="checkbox" class="check-all">
+            </label>
+        </th>
         @endif
         <th style="width:20px; text-align: center;">ID</th>
         <th style="width:200px;">{{ trans('usermanager::users.username') }}</th>
@@ -22,7 +26,9 @@
     <tr>
         @if($currentUser->hasAccess(Config::get('usermanager::permissions.addUserGroup')))
         <td style="text-align: center;">
-            <input type="checkbox" data-user-id="{{ $user->getId() }}">
+            <label class="checkbox primary">
+                <input type="checkbox" data-toggle="checkbox" data-user-id="{{ $user->getId() }}">
+            </label>
         </td>
         @endif
         <td style="text-align: center;">{{ $user->getId() }}</td>

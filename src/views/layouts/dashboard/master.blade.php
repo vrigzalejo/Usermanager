@@ -17,6 +17,10 @@
         <link rel="stylesheet" href="{{ asset('packages/vrigzalejo/usermanager/assets/css/toggle-switch.css') }}" />
 
         <link rel="stylesheet" href="{{ asset('packages/vrigzalejo/usermanager/assets/css/base.css') }}" media="all">
+
+        <link rel="stylesheet" href="{{ asset('packages/vrigzalejo/usermanager/assets/css/style.css') }}" media="all">
+
+
         @if(Config::get('usermanager::config.direction') === 'rtl')
             <link rel="stylesheet" href="{{ asset('packages/vrigzalejo/usermanager/assets/css/base-rtl.css') }}" media="all">
         @endif

@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <button id="add-permission" class="btn btn-primary" style="margin-top: 15px;">{{ trans('usermanager::all.create') }}</button>
+                                    <button id="add-permission" class="btn btn-embossed btn-primary" style="margin-top: 15px;">{{ trans('usermanager::all.create') }}</button>
                                 </div>
                             </div>
                         </div>

@@ -3,11 +3,11 @@
 
     <div style="float:right;">
         @if($currentUser->hasAccess(Config::get('usermanager::permissions.deleteUsers')))
-        <a id="delete-item" class="btn btn-danger">{{ trans('usermanager::all.delete') }}</a>
+        <a id="delete-item" class="btn btn-danger btn-embossed">{{ trans('usermanager::all.delete') }}</a>
         @endif
 
         @if($currentUser->hasAccess(Config::get('usermanager::permissions.newUser')))
-        <a class="btn btn-info btn-new" href="{{ URL::route('newUser') }}">{{ trans('usermanager::users.new') }}</a>
+        <a class="btn btn-embossed btn-primary" href="{{ URL::route('newUser') }}">{{ trans('usermanager::users.new') }}</a>
         @endif
     </div>
 </div>
@@ -15,7 +15,11 @@
 <thead>
     <tr>
         @if($currentUser->hasAccess(Config::get('usermanager::permissions.deleteUsers')))
-        <th class="col-lg-1" style="text-align: center;"><input type="checkbox" class="check-all"></th>
+        <th class="col-lg-1" style="text-align: center;">
+            <label class="checkbox primary">
+                <input type="checkbox" data-toggle="checkbox" class="check-all">
+            </label>
+        </th>
         @endif
         <th class="col-lg-1 hidden-xs" style="text-align: center;">Id</th>
         <th class="col-lg-1">{{ trans('usermanager::users.username') }}</th>
@@ -40,7 +44,9 @@
     <tr>
         @if($currentUser->hasAccess(Config::get('usermanager::permissions.deleteUsers')))
         <td style="text-align: center;">
-            <input type="checkbox" data-user-id="{{ $user->getId(); }}">
+            <label class="checkbox primary">
+                <input type="checkbox" data-toggle="checkbox" data-user-id="{{ $user->getId(); }}">
+            </label>
         </td>
         @endif
         <td class="hidden-xs" style="text-align: center;">{{ $user->getId() }}</td>
