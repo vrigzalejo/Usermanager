@@ -63,10 +63,12 @@ return array(
 
     /**
      * VideoJS SWF for development stage
+     * Wrap it with quotes e.g. '"/packages/vrigzalejo/usermanager/assets/js/video-js.swf"'
      */
     'videojs_swf_dev' => '"/packages/vrigzalejo/usermanager/assets/js/video-js.swf"',
     /**
      * VideoJS SWF for production stage
+     * Wrap it with quotes e.g. '"//vjs.zencdn.net/c/video.js"'
      */
     'videojs_swf_production' => '"//vjs.zencdn.net/c/video.js"'
 );
