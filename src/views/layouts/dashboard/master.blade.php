@@ -65,9 +65,5 @@
 
         <script src="{{ asset('packages/vrigzalejo/usermanager/assets/js/dashboard/base.js') }}"></script>
         @yield('module_scripts')
-
-    <script>
-        $("input[type='checkbox']").on('change', function() { alert('!'); });
-    </script>
     </body>
 </html>
