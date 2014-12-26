@@ -7,8 +7,8 @@
             </div>
             <div class="modal-body">{{ $content }}</div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('usermanager::all.no') }}</button>
-                <button type="button" class="btn btn-primary confirm-action">{{ trans('usermanager::all.yes') }}</button>
+                <button type="button" class="btn btn-default btn-embossed" data-dismiss="modal">{{ trans('usermanager::all.no') }}</button>
+                <button type="button" class="btn btn-primary btn-embossed confirm-action">{{ trans('usermanager::all.yes') }}</button>
             </div>
         </div>
     </div>

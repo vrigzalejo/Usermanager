@@ -1,7 +1,6 @@
 @extends(Config::get('usermanager::views.master'))
 
 @section('content')
-<script src="{{ asset('packages/vrigzalejo/usermanager/assets/js/dashboard/user.js') }}"></script>
 <div class="container" id="main-container">
     <div class="row">
         <div class="col-lg-12">
@@ -19,7 +18,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">{{ trans('usermanager::all.email') }}</label>
-                                    <p><input class="col-lg-12 form-control" type="text" placeholder="{{ trans('usermanager::all.email') }}" id="email" name="email"></p>
+                                    <p><input class="col-lg-12 form-control" type="email" placeholder="{{ trans('usermanager::all.email') }}" id="email" name="email"></p>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">{{ trans('usermanager::all.password') }}</label>
@@ -66,4 +65,8 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('module_scripts')
+<script src="{{ asset('packages/vrigzalejo/usermanager/assets/js/dashboard/user.js') }}"></script>
 @stop

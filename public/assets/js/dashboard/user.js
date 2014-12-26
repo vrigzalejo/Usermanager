@@ -1,4 +1,4 @@
-$(function() 
+$(function()
 {
     $('.activate-user').tooltip();
 
@@ -28,7 +28,7 @@ $(function()
                 window.location = result.redirectUrl;
             }
         });
-        
+
         return false;
     }).on('submit', '#edit-user-form', function()
     {
@@ -61,17 +61,17 @@ $(function()
         $('#confirm-modal').modal();
     }).on('click', '.delete-user .confirm-action', function()
     {
-        $.each($('.table tbody tr td input:checkbox:checked'), function( key, value ) 
+        $.each($('.table tbody tr td input:checkbox:checked'), function( key, value )
         {
             $.ajax(
-            {
-                "url": window.location.href.toString()+"/../user/"+$(this).data('user-id'),
-                "type": "DELETE"
-            }).done(function(result)
-            {
-                showStatusMessage(result.message, result.messageType);
-                ajaxContent($(this).attr('href'), ".ajax-content", false);
-            });
+                {
+                    "url": window.location.href.toString()+"/../user/"+$(this).data('user-id'),
+                    "type": "DELETE"
+                }).done(function(result)
+                {
+                    showStatusMessage(result.message, result.messageType);
+                    ajaxContent($(this).attr('href'), ".ajax-content", false);
+                });
         });
 
         $('#confirm-modal').modal('hide');

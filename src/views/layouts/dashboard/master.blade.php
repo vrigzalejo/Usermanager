@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html class="no-js">
     <head>
         @if(App::environment('local'))
             @foreach(Config::get('usermanager::assets.css_dev') as $style)
@@ -29,6 +30,17 @@
         <link rel="icon" {{ !empty($faviconType) ? 'type="' . $faviconType . '"' : '' }} href="{{ $favicon }}" />
         @endif
 
+        <title>{{ (!empty($siteName)) ? $siteName : "User Manager"}} - {{isset($title) ? $title : '' }}</title>
+    </head>
+    <body>
+
+        @include(Config::get('usermanager::views.header'))
+        {{ isset($breadcrumb) ? Breadcrumbs::create($breadcrumb) : ''; }}
+        <div id="content">
+            @yield('content')
+        </div>
+
+
         @if(App::environment('local'))
             @foreach(Config::get('usermanager::assets.js_dev') as $script)
                 {{ HTML::script($script) }}
@@ -52,15 +64,10 @@
 
 
         <script src="{{ asset('packages/vrigzalejo/usermanager/assets/js/dashboard/base.js') }}"></script>
+        @yield('module_scripts')
 
-        <title>{{ (!empty($siteName)) ? $siteName : "User Manager"}} - {{isset($title) ? $title : '' }}</title>
-    </head>
-    <body>
-
-        @include(Config::get('usermanager::views.header'))
-        {{ isset($breadcrumb) ? Breadcrumbs::create($breadcrumb) : ''; }}
-        <div id="content">
-            @yield('content')
-        </div>
+    <script>
+        $("input[type='checkbox']").on('change', function() { alert('!'); });
+    </script>
     </body>
 </html>

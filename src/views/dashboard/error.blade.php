@@ -1,8 +1,6 @@
 @extends(Config::get('usermanager::views.master'))
 
 @section('content')
-<script src="{{ asset('packages/vrigzalejo/usermanager/assets/js/dashboard/user.js') }}"></script>
-
 <div class="container" id="main-container">
     <div class="row">
         <div class="col-lg-12 offset3">
@@ -19,4 +17,9 @@
         </div>
     </div>
 </div>
+@stop
+
+
+@section('module_scripts')
+<script src="{{ asset('packages/vrigzalejo/usermanager/assets/js/dashboard/user.js') }}"></script>
 @stop

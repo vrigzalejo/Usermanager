@@ -43,7 +43,7 @@ $(document).ready(function()
         return false;
     }).on('change', '.table tbody input:checkbox', function()
     {
-        var parent = $(this).parents('.table'); 
+        var parent = $(this).parents('.table');
         if(parent.find("tbody input:checkbox:checked").length >= 1)
         {
             $('#delete-item').css('display', 'inline-block');
@@ -71,7 +71,6 @@ $(document).ready(function()
     {
         var sArray = $(this).serializeArray();
         ajaxContent([location.protocol,'//', location.host, location.pathname].join(''), ".ajax-content", sArray, false);
-
         return false;
     });
 });

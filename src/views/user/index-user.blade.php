@@ -1,8 +1,6 @@
 @extends(Config::get('usermanager::views.master'))
 
 @section('content')
-<script src="{{ asset('packages/vrigzalejo/usermanager/assets/js/dashboard/user.js') }}"></script>
-
 <div class="container" id="main-container">
     @include('usermanager::layouts.dashboard.confirmation-modal', array('title' => trans('usermanager::all.confirm-delete-title'), 'content' => trans('usermanager::all.confirm-delete-message'), 'type' => 'delete-user'))
     <div class="row">
@@ -58,4 +56,8 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('module_scripts')
+<script src="{{ asset('packages/vrigzalejo/usermanager/assets/js/dashboard/user.js') }}"></script>
 @stop

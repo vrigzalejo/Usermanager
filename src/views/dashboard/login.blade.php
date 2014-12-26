@@ -1,7 +1,6 @@
 @extends(Config::get('usermanager::views.master'))
 
 @section('content')
-<script type="text/javascript" src="{{ asset('packages/vrigzalejo/usermanager/assets/js/dashboard/login.js') }}"></script>
 <div class="container" id="main-container">
     <div class="row" style="margin-top: 20px;">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-xs-offset-2">
@@ -27,4 +26,8 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('module_scripts')
+<script type="text/javascript" src="{{ asset('packages/vrigzalejo/usermanager/assets/js/dashboard/login.js') }}"></script>
 @stop

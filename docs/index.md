@@ -42,3 +42,12 @@ Usermanager is an admin system ( forked from Syntara ) for Laravel 4, made for u
 * jQuery 2.x
 * Twitter Bootstrap 3.x
 * Flat UI 2.x
+
+
+## [Screenshots](http://vrigzalejo.github.io/Usermanager/docs/screenshots.html)
+
+## [Installation](http://vrigzalejo.github.io/Usermanager/docs/installation.html)
+
+## [Custom Development](http://vrigzalejo.github.io/Usermanager/docs/custom.html)
+
+## [Changelogs](http://vrigzalejo.github.io/Usermanager/docs/changelogs.html)
