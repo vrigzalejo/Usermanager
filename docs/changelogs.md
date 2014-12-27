@@ -3,6 +3,7 @@
 ##1.0.2
 * Fixed checkbox, and radio button Flat UI on every AJAX request.
 * Fixed navbar
+* Fixed font color of disabled inputs to make it more readable
 * Seems STABLE so far
 
 ##1.0.1
