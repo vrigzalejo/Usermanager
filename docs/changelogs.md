@@ -1,5 +1,10 @@
 #Versions
 
+##1.0.2
+* Fixed checkbox, and radio button Flat UI on every AJAX request.
+* Fixed navbar
+* Seems STABLE so far
+
 ##1.0.1
 * Removed bootstrap.min.js in assets and in config/asset.php by default
 * Relocated the scripts before </body> tag
@@ -7,7 +12,7 @@
 * Added application.js, and style.css in assets
 * Added application.js in config/assets.php by default
 * Added jquery.min.map
-* Fix button, checkbox, dropdown-list, radio button to Flat UI style
+* Fixed button, checkbox, dropdown-list, radio button to Flat UI style
 * Changed navbar style when navbar-toggle is visible 
 * Changed navbar-toggle hover to transparent
 * Changed navbar-brand's font-weight to lighter

@@ -81,11 +81,6 @@ a:hover{
     background-color: #0087fc;
 }
 
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-    border-color: #0087fc;
-}
-
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {

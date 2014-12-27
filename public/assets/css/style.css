@@ -37,6 +37,12 @@
     display: none;
 }
 
+@media only screen and (max-width:500px) {
+    .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after {
+        display: table;
+    }
+}
+
 .navbar-brand {
     font-weight: lighter;
 }

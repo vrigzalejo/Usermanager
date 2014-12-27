@@ -99,6 +99,11 @@ var ajaxContent = function(url, content, options, useSave)
             window.history.pushState(data, '', window.location);
         }
 
+        // Re-initialized Flat UI's checkbox and radio on every request.
+        $('[data-toggle="checkbox"]').radiocheck();
+        $('[data-toggle="radio"]').radiocheck();
+
+
         lastAjxOpt = options;
     });
 };
