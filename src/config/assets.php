@@ -30,7 +30,7 @@ return array(
      */
     'css_dev' => array(
         '/packages/vrigzalejo/usermanager/assets/css/bootstrap.min.css',
-        '/packages/vrigzalejo/usermanager/assets/css/flat-ui.min.css'
+        '/packages/vrigzalejo/usermanager/assets/css/flat-ui.min.css',
     ),
     /**
      * JS for production stage
@@ -38,8 +38,8 @@ return array(
     'js_dev' => array(
         '/packages/vrigzalejo/usermanager/assets/js/jquery.min.js',
         '/packages/vrigzalejo/usermanager/assets/js/flat-ui.min.js',
-        '/js/application.js',
-        '/packages/vrigzalejo/usermanager/assets/js/video.js'
+        '/packages/vrigzalejo/usermanager/assets//js/application.js',
+        '/packages/vrigzalejo/usermanager/assets/js/video.js',
     ),
 
 
@@ -48,7 +48,7 @@ return array(
      */
     'css_production' => array(
         '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css',
-        '//designmodo.github.io/Flat-UI/dist/css/flat-ui.min.css'
+        '//designmodo.github.io/Flat-UI/dist/css/flat-ui.min.css',
     ),
     /**
      * JS for production stage
@@ -57,7 +57,7 @@ return array(
         '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
         '//designmodo.github.io/Flat-UI/dist/js/flat-ui.min.js',
         '//designmodo.github.io/Flat-UI/docs/assets/js/application.js',
-        '//vjs.zencdn.net/4.7/video.js'
+        '//vjs.zencdn.net/4.7/video.js',
     ),
 
 
@@ -70,5 +70,5 @@ return array(
      * VideoJS SWF for production stage
      * Wrap it with quotes e.g. '"//vjs.zencdn.net/c/video.js"'
      */
-    'videojs_swf_production' => '"//vjs.zencdn.net/c/video.js"'
+    'videojs_swf_production' => '"//vjs.zencdn.net/c/video.js"',
 );
