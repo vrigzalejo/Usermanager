@@ -1,3 +1,5 @@
+# DEPRECATED
+
 # Usermanager
 
 Usermanager is an admin system ( forked from Syntara ) for Laravel 4, made for user management easier.
